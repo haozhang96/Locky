@@ -1,5 +1,6 @@
 package org.haozhang.locky;
 
+import org.haozhang.locky.support.LockyTestSupport;
 import org.haozhang.locky.support.method.Method;
 import org.haozhang.locky.utils.TaskRunner;
 import org.junit.Test;
@@ -20,8 +21,8 @@ public class MethodLockyTest extends LockyTestSupport {
 
     @Test
     public void doOnce() {
-        TaskRunner.batch()
-            .withRunnables(
+        TaskRunner
+            .batch(
                 () -> doOnceA(getRandomKey()),
                 () -> doOnceB(getRandomKey()),
                 () -> doOnceC(getRandomKey())
@@ -35,8 +36,8 @@ public class MethodLockyTest extends LockyTestSupport {
     public void doAtMost() {
         final int atMost = 3;
 
-        TaskRunner.batch()
-            .withRunnables(
+        TaskRunner
+            .batch(
                 () -> doAtMostA(getRandomKey(), atMost),
                 () -> doAtMostB(getRandomKey(), atMost),
                 () -> doAtMostC(getRandomKey(), atMost)

@@ -7,8 +7,12 @@ public class Key<T> {
     private final int hash;
 
     public Key(T key) {
-        this.key = Objects.requireNonNull(key, "The key cannot be null.");
-        this.hash = key.hashCode();
+        this(nonNullKey(key), key.hashCode());
+    }
+
+    protected Key(T key, int hash) {
+        this.key = key;
+        this.hash = hash;
     }
 
     public T getKey() {
@@ -23,5 +27,17 @@ public class Key<T> {
     @Override
     public boolean equals(Object other) {
         return other == this || other instanceof Key && other.hashCode() == hashCode();
+    }
+
+    //==============================================================================================
+    // Helper Methods
+    //==============================================================================================
+
+    protected static <T> T nonNullKey(T key) {
+        return nonNullKey(key, "key");
+    }
+
+    protected static <T> T nonNullKey(T key, String name) {
+        return Objects.requireNonNull(key, "The " + name + " cannot be null.");
     }
 }

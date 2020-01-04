@@ -1,9 +1,11 @@
-package org.haozhang.locky;
+package org.haozhang.locky.support;
 
+import org.haozhang.locky.Locky;
+import org.haozhang.locky.support.method.MethodHandlersMixin;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public abstract class LockyTestSupport {
+public abstract class LockyTestSupport implements MethodHandlersMixin {
     private static final Logger LOGGER = LoggerFactory.getLogger(LockyTestSupport.class);
 
     protected final Locky locky = new Locky();

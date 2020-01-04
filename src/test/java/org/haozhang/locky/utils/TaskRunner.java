@@ -15,15 +15,19 @@ public final class TaskRunner {
     // Batch Builder
     //==============================================================================================
 
-    public static BatchBuilder batch() {
-        return new BatchBuilder();
+    public static BatchBuilder batch(Runnable... runnables) {
+        return new BatchBuilder(runnables);
     }
 
     public static final class BatchBuilder {
-        private Runnable[] runnables = new Runnable[0];
+        private Runnable[] runnables;
         private int count = 1;
         private long timeout = DEFAULT_TIMEOUT;
         private long maxDelay;
+
+        public BatchBuilder(Runnable... runnables) {
+            withRunnables(runnables);
+        }
 
         public BatchBuilder withRunnables(Runnable... runnables) {
             this.runnables = runnables;

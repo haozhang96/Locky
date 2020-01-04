@@ -6,16 +6,8 @@ import org.haozhang.locky.support.method.Method;
 import static org.haozhang.locky.support.method.Method.*;
 
 public class MethodKey extends Key<Method> {
-    private final int hash;
-
-    private MethodKey(Method key) {
-        super(key);
-        this.hash = key.getClass().hashCode();
-    }
-
-    @Override
-    public int hashCode() {
-        return hash;
+    private MethodKey(Method method) {
+        super(nonNullKey(method, "method"), method.getClass().hashCode());
     }
 
     //==============================================================================================

@@ -1,6 +1,6 @@
 package org.haozhang.locky.keys.method;
 
-import org.haozhang.locky.LockyTestSupport;
+import org.haozhang.locky.support.LockyTestSupport;
 import org.haozhang.locky.support.method.*;
 import org.junit.Test;
 

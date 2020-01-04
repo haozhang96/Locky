@@ -10,19 +10,20 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class Locky {
     private static final Logger LOGGER = LoggerFactory.getLogger(Locky.class);
-    private static final int DEFAULT_INITIAL_CAPACITY = 32;
+    private static final int DEFAULT_EXPECTED_CONCURRENCY_LEVEL =
+        Integer.getInteger(Locky.class.getPackage().getName() + ".expectedConcurrencyLevel", 32);
 
-    protected final ConcurrentHashMap<Key, Integer> locks;
+    protected final ConcurrentHashMap<Key<?>, Integer> locks;
 
     public Locky() {
-        this(DEFAULT_INITIAL_CAPACITY);
+        this(DEFAULT_EXPECTED_CONCURRENCY_LEVEL);
     }
 
-    public Locky(int initialCapacity) {
-        this.locks = new ConcurrentHashMap<>(initialCapacity);
+    public Locky(int expectedConcurrencyLevel) {
+        this.locks = new ConcurrentHashMap<>(expectedConcurrencyLevel);
     }
 
-    public void doOnce(Key key, ZeroArgsVoid doWith) {
+    public void doOnce(Key<?> key, ZeroArgsVoid doWith) {
         locks.computeIfAbsent(key, __ -> {
             try {
                 doWith.call();
@@ -33,9 +34,9 @@ public class Locky {
         });
     }
 
-    public void doAtMost(Key key, int count, ZeroArgsVoid doWith) {
+    public void doAtMost(Key<?> key, int count, ZeroArgsVoid doWith) {
         locks.compute(key, (__, currentCount) -> {
-            if (null == currentCount) {
+            if (currentCount == null) {
                 currentCount = 0;
             }
 
