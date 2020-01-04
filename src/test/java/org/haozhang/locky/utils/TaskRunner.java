@@ -12,39 +12,39 @@ public final class TaskRunner {
     private TaskRunner() { }
 
     //==============================================================================================
-    // Batch Builder
+    // Builder
     //==============================================================================================
 
-    public static BatchBuilder batch(Runnable... runnables) {
-        return new BatchBuilder(runnables);
+    public static Builder with(Runnable... runnables) {
+        return new Builder(runnables);
     }
 
-    public static final class BatchBuilder {
+    public static final class Builder {
         private Runnable[] runnables;
         private int count = 1;
         private long timeout = DEFAULT_TIMEOUT;
         private long maxDelay;
 
-        public BatchBuilder(Runnable... runnables) {
+        public Builder(Runnable... runnables) {
             withRunnables(runnables);
         }
 
-        public BatchBuilder withRunnables(Runnable... runnables) {
+        public Builder withRunnables(Runnable... runnables) {
             this.runnables = runnables;
             return this;
         }
 
-        public BatchBuilder withCount(int count) {
+        public Builder withCount(int count) {
             this.count = count;
             return this;
         }
 
-        public BatchBuilder withTimeout(long timeout) {
+        public Builder withTimeout(long timeout) {
             this.timeout = timeout;
             return this;
         }
 
-        public BatchBuilder withDelay(long maxDelay) {
+        public Builder withDelay(long maxDelay) {
             this.maxDelay = maxDelay;
             return this;
         }

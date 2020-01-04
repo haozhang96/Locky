@@ -24,67 +24,67 @@ public interface Method {
     // Void Methods
     //==============================================================================================
 
-    // void method();
+    // void method()
     @FunctionalInterface
     interface ZeroArgsVoid extends Method {
         void call() throws Exception;
     }
 
-    // void method(A);
+    // void method(A)
     @FunctionalInterface
     interface OneArgVoid<A> extends Method {
         void accept(A a) throws Exception;
     }
 
-    // void method(A, B);
+    // void method(A, B)
     @FunctionalInterface
     interface TwoArgsVoid<A, B> extends Method {
         void accept(A a, B b) throws Exception;
     }
 
-    // void method(A, B, C);
+    // void method(A, B, C)
     @FunctionalInterface
     interface ThreeArgsVoid<A, B, C> extends Method {
         void accept(A a, B b, C c) throws Exception;
     }
 
-    // void method(A, B, C, D);
+    // void method(A, B, C, D)
     @FunctionalInterface
     interface FourArgsVoid<A, B, C, D> extends Method {
         void accept(A a, B b, C c, D d) throws Exception;
     }
 
-    // void method(A, B, C, D, E);
+    // void method(A, B, C, D, E)
     @FunctionalInterface
     interface FiveArgsVoid<A, B, C, D, E> extends Method {
         void accept(A a, B b, C c, D d, E e) throws Exception;
     }
 
-    // void method(A, B, C, D, E, F);
+    // void method(A, B, C, D, E, F)
     @FunctionalInterface
     interface SixArgsVoid<A, B, C, D, E, F> extends Method {
         void accept(A a, B b, C c, D d, E e, F f) throws Exception;
     }
 
-    // void method(A, B, C, D, E, F, G);
+    // void method(A, B, C, D, E, F, G)
     @FunctionalInterface
     interface SevenArgsVoid<A, B, C, D, E, F, G> extends Method {
         void accept(A a, B b, C c, D d, E e, F f, G g) throws Exception;
     }
 
-    // void method(A, B, C, D, E, F, G, H);
+    // void method(A, B, C, D, E, F, G, H)
     @FunctionalInterface
     interface EightArgsVoid<A, B, C, D, E, F, G, H> extends Method {
         void accept(A a, B b, C c, D d, E e, F f, G g, H h) throws Exception;
     }
 
-    // void method(A, B, C, D, E, F, G, H, I);
+    // void method(A, B, C, D, E, F, G, H, I)
     @FunctionalInterface
     interface NineArgsVoid<A, B, C, D, E, F, G, H, I> extends Method {
         void accept(A a, B b, C c, D d, E e, F f, G g, H h, I i) throws Exception;
     }
 
-    // void method(A, B, C, D, E, F, G, H, I, J);
+    // void method(A, B, C, D, E, F, G, H, I, J)
     @FunctionalInterface
     interface TenArgsVoid<A, B, C, D, E, F, G, H, I, J> extends Method {
         void accept(A a, B b, C c, D d, E e, F f, G g, H h, I i, J j) throws Exception;
@@ -94,67 +94,67 @@ public interface Method {
     // Returning Methods
     //==============================================================================================
 
-    // R method();
+    // R method()
     @FunctionalInterface
     interface ZeroArgs<R> extends Method {
         R get() throws Exception;
     }
 
-    // R method(A);
+    // R method(A)
     @FunctionalInterface
     interface OneArg<A, R> extends Method {
         R apply(A a) throws Exception;
     }
 
-    // R method(A, B);
+    // R method(A, B)
     @FunctionalInterface
     interface TwoArgs<A, B, R> extends Method {
         R apply(A a, B b) throws Exception;
     }
 
-    // R method(A, B, C);
+    // R method(A, B, C)
     @FunctionalInterface
     interface ThreeArgs<A, B, C, R> extends Method {
         R apply(A a, B b, C c) throws Exception;
     }
 
-    // R method(A, B, C, D);
+    // R method(A, B, C, D)
     @FunctionalInterface
     interface FourArgs<A, B, C, D, R> extends Method {
         R apply(A a, B b, C c, D d) throws Exception;
     }
 
-    // R method(A, B, C, D, E);
+    // R method(A, B, C, D, E)
     @FunctionalInterface
     interface FiveArgs<A, B, C, D, E, R> extends Method {
         R apply(A a, B b, C c, D d, E e) throws Exception;
     }
 
-    // R method(A, B, C, D, E, F);
+    // R method(A, B, C, D, E, F)
     @FunctionalInterface
     interface SixArgs<A, B, C, D, E, F, R> extends Method {
         R apply(A a, B b, C c, D d, E e, F f) throws Exception;
     }
 
-    // R method(A, B, C, D, E, F, G);
+    // R method(A, B, C, D, E, F, G)
     @FunctionalInterface
     interface SevenArgs<A, B, C, D, E, F, G, R> extends Method {
         R apply(A a, B b, C c, D d, E e, F f, G g) throws Exception;
     }
 
-    // R method(A, B, C, D, E, F, G, H);
+    // R method(A, B, C, D, E, F, G, H)
     @FunctionalInterface
     interface EightArgs<A, B, C, D, E, F, G, H, R> extends Method {
         R apply(A a, B b, C c, D d, E e, F f, G g, H h) throws Exception;
     }
 
-    // R method(A, B, C, D, E, F, G, H, I);
+    // R method(A, B, C, D, E, F, G, H, I)
     @FunctionalInterface
     interface NineArgs<A, B, C, D, E, F, G, H, I, R> extends Method {
         R apply(A a, B b, C c, D d, E e, F f, G g, H h, I i) throws Exception;
     }
 
-    // R method(A, B, C, D, E, F, G, H, I, J);
+    // R method(A, B, C, D, E, F, G, H, I, J)
     @FunctionalInterface
     interface TenArgs<A, B, C, D, E, F, G, H, I, J, R> extends Method {
         R apply(A a, B b, C c, D d, E e, F f, G g, H h, I i, J j) throws Exception;

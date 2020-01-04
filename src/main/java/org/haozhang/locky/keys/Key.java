@@ -7,7 +7,7 @@ public class Key<T> {
     private final int hash;
 
     public Key(T key) {
-        this(nonNullKey(key), key.hashCode());
+        this(nonNullKey(key), Objects.hash(key, key.getClass()));
     }
 
     protected Key(T key, int hash) {
@@ -38,6 +38,9 @@ public class Key<T> {
     }
 
     protected static <T> T nonNullKey(T key, String name) {
-        return Objects.requireNonNull(key, "The " + name + " cannot be null.");
+        if (key == null) {
+            throw new IllegalArgumentException("The " + name + " cannot be null.");
+        }
+        return key;
     }
 }

@@ -1,7 +1,7 @@
 package org.haozhang.locky;
 
 import org.haozhang.locky.keys.Key;
-import org.haozhang.locky.support.method.Method.ZeroArgsVoid;
+import org.haozhang.locky.support.method.DoWith;
 import org.haozhang.locky.utils.ExceptionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,7 +23,15 @@ public class Locky {
         this.locks = new ConcurrentHashMap<>(expectedConcurrencyLevel);
     }
 
-    public void doOnce(Key<?> key, ZeroArgsVoid doWith) {
+    //==============================================================================================
+    // Do-once Methods
+    //==============================================================================================
+
+    public void doOnce(Object key, DoWith doWith) {
+        doOnce(new Key<>(key), doWith);
+    }
+
+    public void doOnce(Key<?> key, DoWith doWith) {
         locks.computeIfAbsent(key, __ -> {
             try {
                 doWith.call();
@@ -34,7 +42,15 @@ public class Locky {
         });
     }
 
-    public void doAtMost(Key<?> key, int count, ZeroArgsVoid doWith) {
+    //==============================================================================================
+    // Do-at-most Methods
+    //==============================================================================================
+
+    public void doAtMost(Object key, int count, DoWith doWith) {
+        doAtMost(new Key<>(key), count, doWith);
+    }
+
+    public void doAtMost(Key<?> key, int count, DoWith doWith) {
         locks.compute(key, (__, currentCount) -> {
             if (currentCount == null) {
                 currentCount = 0;

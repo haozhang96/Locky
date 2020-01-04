@@ -7,8 +7,6 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.concurrent.ThreadLocalRandom;
-
 public class MethodLockyTest extends LockyTestSupport {
     private static final Logger LOGGER = LoggerFactory.getLogger(MethodLockyTest.class);
     private static final int KEY_RANGE = 2;
@@ -22,10 +20,10 @@ public class MethodLockyTest extends LockyTestSupport {
     @Test
     public void doOnce() {
         TaskRunner
-            .batch(
-                () -> doOnceA(getRandomKey()),
-                () -> doOnceB(getRandomKey()),
-                () -> doOnceC(getRandomKey())
+            .with(
+                () -> doOnceA(randomInt(KEY_RANGE)),
+                () -> doOnceB(randomInt(KEY_RANGE)),
+                () -> doOnceC(randomInt(KEY_RANGE))
             )
             .withCount(100)
             .withDelay(1000)
@@ -37,10 +35,10 @@ public class MethodLockyTest extends LockyTestSupport {
         final int atMost = 3;
 
         TaskRunner
-            .batch(
-                () -> doAtMostA(getRandomKey(), atMost),
-                () -> doAtMostB(getRandomKey(), atMost),
-                () -> doAtMostC(getRandomKey(), atMost)
+            .with(
+                () -> doAtMostA(randomInt(KEY_RANGE), atMost),
+                () -> doAtMostB(randomInt(KEY_RANGE), atMost),
+                () -> doAtMostC(randomInt(KEY_RANGE), atMost)
             )
             .withCount(100)
             .withDelay(1000)
@@ -93,13 +91,5 @@ public class MethodLockyTest extends LockyTestSupport {
         methodLocky.doAtMost(Method.of(this::doAtMostC), key, count, () -> {
             LOGGER.info("c({}): At most {}", key, count);
         });
-    }
-
-    //==============================================================================================
-    // Helper Methods
-    //==============================================================================================
-
-    private int getRandomKey() {
-        return ThreadLocalRandom.current().nextInt(KEY_RANGE);
     }
 }
