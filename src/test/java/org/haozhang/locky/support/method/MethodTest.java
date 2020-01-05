@@ -12,7 +12,7 @@ public class MethodTest extends LockyTestSupport {
 
     @Test
     public void asKey() {
-        assertSame(METHOD.asKey().getKey(), METHOD);
+        assertSame(METHOD.asKey().getValue(), METHOD);
     }
 
     @Test

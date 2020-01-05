@@ -7,7 +7,7 @@ import static org.haozhang.locky.support.method.Method.*;
 
 public class MethodKey extends Key<Method> {
     private MethodKey(Method method) {
-        super(nonNullKey(method, "method"), method.getClass().hashCode());
+        super(nonNullValue(method, "method"), method.getClass().hashCode());
     }
 
     //==============================================================================================

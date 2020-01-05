@@ -9,15 +9,15 @@ public class CompositeKey<X extends Key<?>, Y extends Key<?>> extends Key<X> {
         super(
             x,
             Objects.hash(
-                nonNullKey(x, "first key (x)"), x.getClass(),
-                nonNullKey(y, "second key (y)"), y.getClass()
+                nonNullValue(x, "first value (x)"), x.getClass(),
+                nonNullValue(y, "second value (y)"), y.getClass()
             )
         );
         this.y = y;
     }
 
     public X getX() {
-        return getKey();
+        return getValue();
     }
 
     public Y getY() {
