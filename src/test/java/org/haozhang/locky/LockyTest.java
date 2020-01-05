@@ -37,7 +37,7 @@ public class LockyTest extends LockyTestSupport {
     }
 
     //==============================================================================================
-    // Testing Methods
+    // Test Helper Methods
     //==============================================================================================
 
     private void doOnce(int key) {

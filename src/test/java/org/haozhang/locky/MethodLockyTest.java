@@ -46,7 +46,7 @@ public class MethodLockyTest extends LockyTestSupport {
     }
 
     //==============================================================================================
-    // Do-once Testing Methods
+    // Do-once Test Helper Methods
     //==============================================================================================
 
     private void doOnceA(int key) {
@@ -70,7 +70,7 @@ public class MethodLockyTest extends LockyTestSupport {
     }
 
     //==============================================================================================
-    // Do-at-most Testing Methods
+    // Do-at-most Test Helper Methods
     //==============================================================================================
 
     private void doAtMostA(int key, int count) {
