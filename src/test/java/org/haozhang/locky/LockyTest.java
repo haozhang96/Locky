@@ -19,7 +19,7 @@ public class LockyTest extends LockyTestSupport {
     @Test
     public void doOnce() {
         TaskRunner
-            .with(() -> doOnce(randomInt(KEY_RANGE)))
+            .withTasks(() -> doOnce(randomInt(KEY_RANGE)))
             .withCount(100)
             .withDelay(1000)
             .run();
@@ -30,7 +30,7 @@ public class LockyTest extends LockyTestSupport {
         final int atMost = 3;
 
         TaskRunner
-            .with(() -> doAtMost(randomInt(KEY_RANGE), atMost))
+            .withTasks(() -> doAtMost(randomInt(KEY_RANGE), atMost))
             .withCount(100)
             .withDelay(1000)
             .run();

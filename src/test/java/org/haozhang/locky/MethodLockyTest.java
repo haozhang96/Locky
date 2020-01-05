@@ -20,7 +20,7 @@ public class MethodLockyTest extends LockyTestSupport {
     @Test
     public void doOnce() {
         TaskRunner
-            .with(
+            .withTasks(
                 () -> doOnceA(randomInt(KEY_RANGE)),
                 () -> doOnceB(randomInt(KEY_RANGE)),
                 () -> doOnceC(randomInt(KEY_RANGE))
@@ -35,7 +35,7 @@ public class MethodLockyTest extends LockyTestSupport {
         final int atMost = 3;
 
         TaskRunner
-            .with(
+            .withTasks(
                 () -> doAtMostA(randomInt(KEY_RANGE), atMost),
                 () -> doAtMostB(randomInt(KEY_RANGE), atMost),
                 () -> doAtMostC(randomInt(KEY_RANGE), atMost)

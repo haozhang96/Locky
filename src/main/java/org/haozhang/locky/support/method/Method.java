@@ -4,17 +4,25 @@ import org.haozhang.locky.keys.method.MethodKey;
 import org.haozhang.locky.utils.ExceptionUtils;
 
 public interface Method {
+    //==============================================================================================
+    // Default Interface Methods
+    //==============================================================================================
+
     default MethodKey asKey() {
         return MethodKey.of(this);
     }
 
-    default void to(OneArgVoid<Method> doWith) {
-        to((OneArg<Method, Void>) doWith);
+    default void to(OneArgVoid<Method> consumer) {
+        try {
+            consumer.accept(this);
+        } catch (Exception exception) {
+            throw ExceptionUtils.toRuntimeException(exception);
+        }
     }
 
-    default <R> R to(OneArg<Method, R> doWith) {
+    default <R> R to(OneArg<Method, R> function) {
         try {
-            return doWith.apply(this);
+            return function.apply(this);
         } catch (Exception exception) {
             throw ExceptionUtils.toRuntimeException(exception);
         }

@@ -15,7 +15,7 @@ public final class TaskRunner {
     // Builder
     //==============================================================================================
 
-    public static Builder with(Runnable... runnables) {
+    public static Builder withTasks(Runnable... runnables) {
         return new Builder(runnables);
     }
 
@@ -26,10 +26,10 @@ public final class TaskRunner {
         private long maxDelay;
 
         public Builder(Runnable... runnables) {
-            withRunnables(runnables);
+            withTasks(runnables);
         }
 
-        public Builder withRunnables(Runnable... runnables) {
+        public Builder withTasks(Runnable... runnables) {
             this.runnables = runnables;
             return this;
         }
