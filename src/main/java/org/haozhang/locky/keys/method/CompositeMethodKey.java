@@ -9,10 +9,10 @@ public class CompositeMethodKey<X extends MethodKey, Y extends Key<?>> extends C
     }
 
     public X getMethodKey() {
-        return getX();
+        return getFirstKey();
     }
 
     public Y getOtherKey() {
-        return getY();
+        return getSecondKey();
     }
 }

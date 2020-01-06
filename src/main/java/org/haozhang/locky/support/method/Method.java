@@ -217,7 +217,7 @@ public interface Method {
     }
 
     //==============================================================================================
-    // Casting Methods for Returning Method
+    // Casting Methods for Returning Methods
     //==============================================================================================
 
     static <R> ZeroArgs<R> of(ZeroArgs<R> method) {

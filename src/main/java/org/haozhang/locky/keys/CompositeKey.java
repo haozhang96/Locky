@@ -3,24 +3,24 @@ package org.haozhang.locky.keys;
 import java.util.Objects;
 
 public class CompositeKey<X extends Key<?>, Y extends Key<?>> extends Key<X> {
-    private final Y y;
+    private final Y secondKey;
 
-    public CompositeKey(X x, Y y) {
+    public CompositeKey(X firstKey, Y secondKey) {
         super(
-            x,
+            firstKey,
             Objects.hash(
-                nonNullValue(x, "first value (x)"), x.getClass(),
-                nonNullValue(y, "second value (y)"), y.getClass()
+                nonNullValue(firstKey, "first key"), firstKey.getClass(),
+                nonNullValue(secondKey, "second key"), secondKey.getClass()
             )
         );
-        this.y = y;
+        this.secondKey = secondKey;
     }
 
-    public X getX() {
+    public X getFirstKey() {
         return getValue();
     }
 
-    public Y getY() {
-        return y;
+    public Y getSecondKey() {
+        return secondKey;
     }
 }

@@ -12,7 +12,7 @@ public class MethodTest extends LockyTestSupport {
 
     @Test
     public void asKey() {
-        assertSame(METHOD.asKey().getValue(), METHOD);
+        assertSame(METHOD, METHOD.asKey().getValue());
     }
 
     @Test
@@ -41,115 +41,115 @@ public class MethodTest extends LockyTestSupport {
 
     @Test
     public void of_givenZeroArgsVoidMethod_thenReturnSameMethod() {
-        assertSame(Method.of(Methods.ZERO_ARGS_VOID), Methods.ZERO_ARGS_VOID);
+        assertSame(Methods.ZERO_ARGS_VOID, Method.of(Methods.ZERO_ARGS_VOID));
     }
 
     @Test
     public void of_givenOneArgVoidMethod_thenReturnSameMethod() {
-        assertSame(Method.of(Methods.ONE_ARG_VOID), Methods.ONE_ARG_VOID);
+        assertSame(Methods.ONE_ARG_VOID, Method.of(Methods.ONE_ARG_VOID));
     }
 
     @Test
     public void of_givenTwoArgsVoidMethod_thenReturnSameMethod() {
-        assertSame(Method.of(Methods.TWO_ARGS_VOID), Methods.TWO_ARGS_VOID);
+        assertSame(Methods.TWO_ARGS_VOID, Method.of(Methods.TWO_ARGS_VOID));
     }
 
     @Test
     public void of_givenThreeArgsVoidMethod_thenReturnSameMethod() {
-        assertSame(Method.of(Methods.THREE_ARGS_VOID), Methods.THREE_ARGS_VOID);
+        assertSame(Methods.THREE_ARGS_VOID, Method.of(Methods.THREE_ARGS_VOID));
     }
 
     @Test
     public void of_givenFourArgsVoidMethod_thenReturnSameMethod() {
-        assertSame(Method.of(Methods.FOUR_ARGS_VOID), Methods.FOUR_ARGS_VOID);
+        assertSame(Methods.FOUR_ARGS_VOID, Method.of(Methods.FOUR_ARGS_VOID));
     }
 
     @Test
     public void of_givenFiveArgsVoidMethod_thenReturnSameMethod() {
-        assertSame(Method.of(Methods.FIVE_ARGS_VOID), Methods.FIVE_ARGS_VOID);
+        assertSame(Methods.FIVE_ARGS_VOID, Method.of(Methods.FIVE_ARGS_VOID));
     }
 
     @Test
     public void of_givenSixArgsVoidMethod_thenReturnSameMethod() {
-        assertSame(Method.of(Methods.SIX_ARGS_VOID), Methods.SIX_ARGS_VOID);
+        assertSame(Methods.SIX_ARGS_VOID, Method.of(Methods.SIX_ARGS_VOID));
     }
 
     @Test
     public void of_givenSevenArgsVoidMethod_thenReturnSameMethod() {
-        assertSame(Method.of(Methods.SEVEN_ARGS_VOID), Methods.SEVEN_ARGS_VOID);
+        assertSame(Methods.SEVEN_ARGS_VOID, Method.of(Methods.SEVEN_ARGS_VOID));
     }
 
     @Test
     public void of_givenEightArgsVoidMethod_thenReturnSameMethod() {
-        assertSame(Method.of(Methods.EIGHT_ARGS_VOID), Methods.EIGHT_ARGS_VOID);
+        assertSame(Methods.EIGHT_ARGS_VOID, Method.of(Methods.EIGHT_ARGS_VOID));
     }
 
     @Test
     public void of_givenNineArgsVoidMethod_thenReturnSameMethod() {
-        assertSame(Method.of(Methods.NINE_ARGS_VOID), Methods.NINE_ARGS_VOID);
+        assertSame(Methods.NINE_ARGS_VOID, Method.of(Methods.NINE_ARGS_VOID));
     }
 
     @Test
     public void of_givenTenArgsVoidMethod_thenReturnSameMethod() {
-        assertSame(Method.of(Methods.TEN_ARGS_VOID), Methods.TEN_ARGS_VOID);
+        assertSame(Methods.TEN_ARGS_VOID, Method.of(Methods.TEN_ARGS_VOID));
     }
 
     //==============================================================================================
-    // Casting Methods for Returning Method
+    // Casting Methods for Returning Methods
     //==============================================================================================
 
     @Test
     public void of_givenZeroArgsMethod_thenReturnSameMethod() {
-        assertSame(Method.of(Methods.ZERO_ARGS), Methods.ZERO_ARGS);
+        assertSame(Methods.ZERO_ARGS, Method.of(Methods.ZERO_ARGS));
     }
 
     @Test
     public void of_givenOneArgMethod_thenReturnSameMethod() {
-        assertSame(Method.of(Methods.ONE_ARG), Methods.ONE_ARG);
+        assertSame(Methods.ONE_ARG, Method.of(Methods.ONE_ARG));
     }
 
     @Test
     public void of_givenTwoArgsMethod_thenReturnSameMethod() {
-        assertSame(Method.of(Methods.TWO_ARGS), Methods.TWO_ARGS);
+        assertSame(Methods.TWO_ARGS, Method.of(Methods.TWO_ARGS));
     }
 
     @Test
     public void of_givenThreeArgsMethod_thenReturnSameMethod() {
-        assertSame(Method.of(Methods.THREE_ARGS), Methods.THREE_ARGS);
+        assertSame(Methods.THREE_ARGS, Method.of(Methods.THREE_ARGS));
     }
 
     @Test
     public void of_givenFourArgsMethod_thenReturnSameMethod() {
-        assertSame(Method.of(Methods.FOUR_ARGS), Methods.FOUR_ARGS);
+        assertSame(Methods.FOUR_ARGS, Method.of(Methods.FOUR_ARGS));
     }
 
     @Test
     public void of_givenFiveArgsMethod_thenReturnSameMethod() {
-        assertSame(Method.of(Methods.FIVE_ARGS), Methods.FIVE_ARGS);
+        assertSame(Methods.FIVE_ARGS, Method.of(Methods.FIVE_ARGS));
     }
 
     @Test
     public void of_givenSixArgsMethod_thenReturnSameMethod() {
-        assertSame(Method.of(Methods.SIX_ARGS), Methods.SIX_ARGS);
+        assertSame(Methods.SIX_ARGS, Method.of(Methods.SIX_ARGS));
     }
 
     @Test
     public void of_givenSevenArgsMethod_thenReturnSameMethod() {
-        assertSame(Method.of(Methods.SEVEN_ARGS), Methods.SEVEN_ARGS);
+        assertSame(Methods.SEVEN_ARGS, Method.of(Methods.SEVEN_ARGS));
     }
 
     @Test
     public void of_givenEightArgsMethod_thenReturnSameMethod() {
-        assertSame(Method.of(Methods.EIGHT_ARGS), Methods.EIGHT_ARGS);
+        assertSame(Methods.EIGHT_ARGS, Method.of(Methods.EIGHT_ARGS));
     }
 
     @Test
     public void of_givenNineArgsMethod_thenReturnSameMethod() {
-        assertSame(Method.of(Methods.NINE_ARGS), Methods.NINE_ARGS);
+        assertSame(Methods.NINE_ARGS, Method.of(Methods.NINE_ARGS));
     }
 
     @Test
     public void of_givenTenArgsMethod_thenReturnSameMethod() {
-        assertSame(Method.of(Methods.TEN_ARGS), Methods.TEN_ARGS);
+        assertSame(Methods.TEN_ARGS, Method.of(Methods.TEN_ARGS));
     }
 }

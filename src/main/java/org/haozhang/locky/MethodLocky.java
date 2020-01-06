@@ -11,8 +11,8 @@ public class MethodLocky extends Locky {
         super();
     }
 
-    public MethodLocky(int initialCapacity) {
-        super(initialCapacity);
+    public MethodLocky(int expectedConcurrencyLevel) {
+        super(expectedConcurrencyLevel);
     }
 
     //==============================================================================================

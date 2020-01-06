@@ -1,6 +1,6 @@
 package org.haozhang.locky.support.method;
 
-import static org.haozhang.locky.support.method.Method.*;
+import org.haozhang.locky.support.method.Method.*;
 
 public interface MethodHandlersMixin {
     //==============================================================================================
@@ -52,7 +52,7 @@ public interface MethodHandlersMixin {
     }
 
     //==============================================================================================
-    // Returning Method
+    // Returning Methods
     //==============================================================================================
 
     default <R> ZeroArgs<R> method(ZeroArgs<R> method) {

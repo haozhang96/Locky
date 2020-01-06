@@ -8,10 +8,10 @@ public class DualMethodKey<X extends MethodKey, Y extends MethodKey> extends Com
     }
 
     public X getFirstMethodKey() {
-        return getX();
+        return getFirstKey();
     }
 
     public Y getSecondMethodKey() {
-        return getY();
+        return getSecondKey();
     }
 }

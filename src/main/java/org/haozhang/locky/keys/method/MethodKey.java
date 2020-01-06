@@ -2,8 +2,7 @@ package org.haozhang.locky.keys.method;
 
 import org.haozhang.locky.keys.Key;
 import org.haozhang.locky.support.method.Method;
-
-import static org.haozhang.locky.support.method.Method.*;
+import org.haozhang.locky.support.method.Method.*;
 
 public class MethodKey extends Key<Method> {
     private MethodKey(Method method) {
