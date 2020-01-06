@@ -1,5 +1,6 @@
 package org.haozhang.locky;
 
+import org.hamcrest.Matchers;
 import org.haozhang.locky.support.LockyTestSupport;
 import org.haozhang.locky.support.method.Method;
 import org.haozhang.locky.utils.TaskRunner;
@@ -11,7 +12,10 @@ import java.util.concurrent.atomic.AtomicIntegerArray;
 
 public class MethodLockyTest extends LockyTestSupport {
     private static final Logger LOGGER = LoggerFactory.getLogger(MethodLockyTest.class);
-    private static final int KEY_RANGE = 2;
+
+    private static final int CONCURRENT_THREADS = 100;
+    private static final int KEY_RANGE = 3;
+    private static final int AT_MOST = 3;
 
     private final MethodLocky methodLocky = new MethodLocky();
     private final AtomicIntegerArray doOnceACounters = new AtomicIntegerArray(KEY_RANGE);
@@ -33,35 +37,33 @@ public class MethodLockyTest extends LockyTestSupport {
                 () -> doOnceB(randomInt(KEY_RANGE)),
                 () -> doOnceC(randomInt(KEY_RANGE))
             )
-            .withCount(100)
+            .withCount(CONCURRENT_THREADS)
             .withDelay(1000)
             .runRandomly();
 
         for (int i = 0; i < KEY_RANGE; i++) {
-            assertTrue(doOnceACounters.get(i) <= 1);
-            assertTrue(doOnceBCounters.get(i) <= 1);
-            assertTrue(doOnceCCounters.get(i) <= 1);
+            assertThat(doOnceACounters.get(i), Matchers.lessThanOrEqualTo(1));
+            assertThat(doOnceBCounters.get(i), Matchers.lessThanOrEqualTo(1));
+            assertThat(doOnceCCounters.get(i), Matchers.lessThanOrEqualTo(1));
         }
     }
 
     @Test
     public void doAtMost() {
-        final int atMost = 3;
-
         TaskRunner
             .withTasks(
-                () -> doAtMostA(randomInt(KEY_RANGE), atMost),
-                () -> doAtMostB(randomInt(KEY_RANGE), atMost),
-                () -> doAtMostC(randomInt(KEY_RANGE), atMost)
+                () -> doAtMostA(randomInt(KEY_RANGE), AT_MOST),
+                () -> doAtMostB(randomInt(KEY_RANGE), AT_MOST),
+                () -> doAtMostC(randomInt(KEY_RANGE), AT_MOST)
             )
-            .withCount(100)
+            .withCount(CONCURRENT_THREADS)
             .withDelay(1000)
             .runRandomly();
 
         for (int i = 0; i < KEY_RANGE; i++) {
-            assertTrue(doAtMostACounters.get(i) <= atMost);
-            assertTrue(doAtMostBCounters.get(i) <= atMost);
-            assertTrue(doAtMostCCounters.get(i) <= atMost);
+            assertThat(doAtMostACounters.get(i), Matchers.lessThanOrEqualTo(AT_MOST));
+            assertThat(doAtMostBCounters.get(i), Matchers.lessThanOrEqualTo(AT_MOST));
+            assertThat(doAtMostCCounters.get(i), Matchers.lessThanOrEqualTo(AT_MOST));
         }
     }
 
