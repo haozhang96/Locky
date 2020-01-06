@@ -2,7 +2,9 @@ package org.haozhang.locky.keys;
 
 import java.util.Arrays;
 
-public class VariadicKey<T> extends Key<T[]> {
+public class VariadicKey<T> extends Key {
+    private final T[] values;
+
     /**
      * Construct a {@link VariadicKey} instance with the given values.
      * <br/><br/>
@@ -13,6 +15,15 @@ public class VariadicKey<T> extends Key<T[]> {
      * @param values The values to create the key with
      */
     public VariadicKey(T... values) {
-        super(nonNullValue(values, "values"), Arrays.hashCode(values));
+        this(nonNull(values, "values"), Arrays.hashCode(values));
+    }
+
+    protected VariadicKey(T[] values, int hash) {
+        super(hash);
+        this.values = values;
+    }
+
+    public T[] getValues() {
+        return values;
     }
 }

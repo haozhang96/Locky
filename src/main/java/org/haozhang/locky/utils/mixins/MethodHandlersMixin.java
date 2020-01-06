@@ -1,4 +1,4 @@
-package org.haozhang.locky.support.method;
+package org.haozhang.locky.utils.mixins;
 
 import org.haozhang.locky.support.method.Method.*;
 

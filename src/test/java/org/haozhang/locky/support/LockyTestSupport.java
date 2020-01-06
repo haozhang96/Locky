@@ -1,6 +1,6 @@
 package org.haozhang.locky.support;
 
-import org.haozhang.locky.support.method.MethodHandlersMixin;
+import org.haozhang.locky.utils.mixins.MethodHandlersMixin;
 import org.haozhang.locky.utils.mixins.ThreadLocalRandomMixin;
 import org.junit.Assert;
 

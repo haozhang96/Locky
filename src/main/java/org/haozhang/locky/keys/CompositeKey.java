@@ -2,25 +2,29 @@ package org.haozhang.locky.keys;
 
 import java.util.Objects;
 
-public class CompositeKey<X extends Key<?>, Y extends Key<?>> extends Key<X> {
-    private final Y secondKey;
+public class CompositeKey<A extends Key, B extends Key> extends Key {
+    private final A keyA;
+    private final B keyB;
 
-    public CompositeKey(X firstKey, Y secondKey) {
-        super(
-            firstKey,
-            Objects.hash(
-                nonNullValue(firstKey, "first key"), firstKey.getClass(),
-                nonNullValue(secondKey, "second key"), secondKey.getClass()
-            )
+    public CompositeKey(A keyA, B keyB) {
+        this(
+            nonNull(keyA, "key A (first key)"),
+            nonNull(keyB, "key B (second key)"),
+            Objects.hash(keyA, keyB)
         );
-        this.secondKey = secondKey;
     }
 
-    public X getFirstKey() {
-        return getValue();
+    protected CompositeKey(A keyA, B keyB, int hash) {
+        super(hash);
+        this.keyA = keyA;
+        this.keyB = keyB;
     }
 
-    public Y getSecondKey() {
-        return secondKey;
+    public A getKeyA() {
+        return keyA;
+    }
+
+    public B getKeyB() {
+        return keyB;
     }
 }

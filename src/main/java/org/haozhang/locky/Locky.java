@@ -1,6 +1,7 @@
 package org.haozhang.locky;
 
 import org.haozhang.locky.keys.Key;
+import org.haozhang.locky.keys.PlainKey;
 import org.haozhang.locky.support.method.DoWith;
 import org.haozhang.locky.utils.ExceptionUtils;
 import org.slf4j.Logger;
@@ -13,7 +14,7 @@ public class Locky {
     private static final int DEFAULT_EXPECTED_CONCURRENCY_LEVEL =
         Integer.getInteger(Locky.class.getPackage().getName() + ".expectedConcurrencyLevel", 32);
 
-    protected final ConcurrentHashMap<Key<?>, Integer> locks;
+    protected final ConcurrentHashMap<Key, Integer> locks;
 
     public Locky() {
         this(DEFAULT_EXPECTED_CONCURRENCY_LEVEL);
@@ -28,10 +29,10 @@ public class Locky {
     //==============================================================================================
 
     public void doOnce(Object key, DoWith doWith) {
-        doOnce(new Key<>(key), doWith);
+        doOnce(new PlainKey<>(key), doWith);
     }
 
-    public void doOnce(Key<?> key, DoWith doWith) {
+    public void doOnce(Key key, DoWith doWith) {
         locks.computeIfAbsent(key, __ -> {
             try {
                 doWith.call();
@@ -47,10 +48,10 @@ public class Locky {
     //==============================================================================================
 
     public void doAtMost(Object key, int count, DoWith doWith) {
-        doAtMost(new Key<>(key), count, doWith);
+        doAtMost(new PlainKey<>(key), count, doWith);
     }
 
-    public void doAtMost(Key<?> key, int count, DoWith doWith) {
+    public void doAtMost(Key key, int count, DoWith doWith) {
         locks.compute(key, (__, currentCount) -> {
             if (currentCount == null) {
                 currentCount = 0;

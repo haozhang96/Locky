@@ -9,7 +9,7 @@ public interface Method {
     //==============================================================================================
 
     default MethodKey asKey() {
-        return MethodKey.of(this);
+        return new MethodKey(this);
     }
 
     default void to(OneArgVoid<Method> consumer) {
